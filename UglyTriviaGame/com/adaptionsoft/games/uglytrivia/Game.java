@@ -1,7 +1,7 @@
 package com.adaptionsoft.games.uglytrivia;
 
 public class Game {
-	
+		
 	//Esto debería llegar por factoria
     Questions questions = new Questions();
     Players players;
@@ -146,5 +146,8 @@ public class Game {
 		this.players = players;
 	}
 
+	public void resetPlayers() {
+		this.players = null;
+	}
 	
 }
