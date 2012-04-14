@@ -1,12 +1,14 @@
 package com.adaptionsoft.games.uglytrivia;
 
 import java.util.ArrayList;
+import java.util.List;	
 
 public class Players {
-	private int number_of_players = 6;
+	private int number_of_players = 10;
+	private int number_of_purses = 6;
 	private ArrayList players = new ArrayList() ;
 	private int[] places = new int[number_of_players];
-	private int[] purses = new int[number_of_players];
+	private int[] purses = new int[number_of_purses];
 	private boolean[] inPenaltyBox = new boolean[number_of_players];
 	private int[] highscores = new int[number_of_players];
 	
@@ -39,7 +41,7 @@ public class Players {
 	 * Tells if the last player won.
 	 */
 	public boolean didPlayerWin(int currentPlayer) {
-		return !(getPurses()[currentPlayer] == getNumber_of_players());
+		return !(getPurses()[currentPlayer] == getNumber_of_purses());
 	}
 	
 	public int getNumber_of_players() {
@@ -88,5 +90,12 @@ public class Players {
 
 	public void setHighscores(int[] highscores) {
 		this.highscores = highscores;
+	}
+	public int getNumber_of_purses() {
+		return number_of_purses;
+	}
+
+	public void setNumber_of_purses(int number_of_purses) {
+		this.number_of_purses = number_of_purses;
 	}
 }
