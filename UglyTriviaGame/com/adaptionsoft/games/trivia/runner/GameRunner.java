@@ -1,40 +1,45 @@
+
 package com.adaptionsoft.games.trivia.runner;
 import java.util.Random;
 
 import com.adaptionsoft.games.uglytrivia.Game;
-import com.adaptionsoft.games.uglytrivia.Players;
-
 
 public class GameRunner {
 
 	private static boolean notAWinner;
+	protected static int NOLIMIT = -1;
+	private static int totalRoundsToPlay = NOLIMIT;
 
-	public static void main(String[] args) {
-		Game aGame = new Game();
-		
-		Players players = new Players();
-		players.addPlayer("Chet");
-		players.addPlayer("Pat");
-		players.addPlayer("Sue");
-		aGame.setPlayers(players);
-
-		Random rand = new Random();
-
-		play(aGame, rand);
-
-	}
-
-	protected static void play(Game aGame, Random rand) {
+	protected static void play(Game game, Random rand) {
+		int currentRound = 0;
 		do {	
-			aGame.roll(rand.nextInt(5) + 1);
-
-			if (rand.nextInt(9) == 7) {
-				notAWinner = aGame.wrongAnswer();
+			game.roll(dice(rand));
+			
+			if (isACorrectAnswerExpected(rand)) {
+				notAWinner = game.wasCorrectlyAnswered();
 			} else {
-				notAWinner = aGame.wasCorrectlyAnswered();
+				notAWinner = game.wrongAnswer();			
 			}
-
-		} while (notAWinner);
+		
+			currentRound++;
+			
+		} while (gameIsNotFinished(currentRound));
 	}
 
+	private static boolean gameIsNotFinished(int currentRound) {		
+		return (notAWinner && (totalRoundsToPlay == NOLIMIT || currentRound < totalRoundsToPlay));
+	}
+
+	protected static void setTotalRoundsToPlay(int rounds){
+		totalRoundsToPlay = rounds;
+	}
+	
+	private static boolean isACorrectAnswerExpected(Random rand) {
+		return rand.nextInt(9) != 7;
+	}
+
+	private static int dice(Random rand) {
+		return rand.nextInt(5) + 1;
+	}
+	
 }
