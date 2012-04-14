@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import org.junit.Before;
@@ -22,12 +20,13 @@ public class GameRunnerTest {
 	private ByteArrayOutputStream outContent; 
 	private Game game;
 	private Random randomMock;
-	private static Players players = new Players();
+	private static Players players;
 	
 	@Before
 	public void SetUp(){
 		randomMock = mock(Random.class);
-		GameRunner.setTotalRoundsToPlay(GameRunner.NOLIMIT);		
+		GameRunner.setTotalRoundsToPlay(GameRunner.NOLIMIT);	
+		players = new Players();
 	}
 		
 	@Test
@@ -38,7 +37,7 @@ public class GameRunnerTest {
 		when(randomMock.nextInt(9)).thenReturn(2);
 		
 		game = new Game();
-		game.resetPlayers();
+		//game.resetPlayers();
 		game.setPlayers(setUpPlayersToPlay(1));
 		GameRunner.setTotalRoundsToPlay(6);
 		GameRunner.play(game, randomMock);
@@ -53,7 +52,7 @@ public class GameRunnerTest {
 		//Game gameMock = mock(Game.class);
 		//Game game = new Game();
 		Game gameSpy = spy(new Game());
-		gameSpy.resetPlayers();
+		//gameSpy.resetPlayers();
 		when(randomMock.nextInt(5)).thenReturn(0);
 		when(randomMock.nextInt(9)).thenReturn(7).thenReturn(1);
 		
@@ -70,7 +69,7 @@ public class GameRunnerTest {
 		outContent = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outContent));
 		Game gameSpy = spy(new Game());
-		gameSpy.resetPlayers();
+		//gameSpy.resetPlayers();
 		Random randomSpy = spy (new Random());
 		when(randomSpy.nextInt(9)).thenReturn(1);
 			
