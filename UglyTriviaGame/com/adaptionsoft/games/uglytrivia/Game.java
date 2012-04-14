@@ -57,10 +57,6 @@ public class Game {
 		
 	}
 	
-  public static void main(String[] args) {
-    System.out.println(Messages.getString("Text.18")); // Display the string. //$NON-NLS-1$
-  }
-
 	// randomly return a category
 	private String currentCategory() {
 		if (players.getPlaces()[currentPlayer] == 0) return Messages.getString("Text.14"); //$NON-NLS-1$
