@@ -6,7 +6,9 @@ public class Game {
 		
 	//Esto debería llegar por factoria
     Questions questions = new Questions();
-    Players players;    
+    Players players;
+    
+    private HashMap playersScores = new HashMap();
 
 	int currentPlayer = 0;
     boolean isGettingOutOfPenaltyBox;
@@ -95,6 +97,8 @@ public class Game {
 				+ players.getPurses()[currentPlayer]
 				+ Messages.getString("Text.31")); //$NON-NLS-1$
 		
+		playersScores.put(players.getPlayers().get(currentPlayer),players.getPurses()[currentPlayer] );
+		
 		boolean winner = players.didPlayerWin(currentPlayer);
 		currentPlayer++;
 		if (currentPlayer == players.getPlayers().size()) currentPlayer = 0;
@@ -137,5 +141,9 @@ public class Game {
 
 	public void resetPlayers() {
 		this.players = null;
-	}	
+	}
+	
+	public HashMap getPlayersScores(){
+		return playersScores;
+	}
 }
