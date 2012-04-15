@@ -43,7 +43,6 @@ public class Historic implements Serializable{
 				Map.Entry e = (Map.Entry)it.next();
 				System.out.println("Jugador " + e.getKey() + " " + "con resultado " + (Integer)e.getValue());
 			}
-		}
-		
+		}		
 	}	
 }
