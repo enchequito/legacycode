@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<title>PORTIC Forwarding</title>
+	<link rel="stylesheet" href="css/redmond/jquery.ui.all.css">
+    <link rel="stylesheet" href="css/ui.jqgrid.css" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/ui/jquery.ui.core.js"></script>
+	<script src="js/ui/jquery.ui.widget.js"></script>
+	<script src="js/ui/jquery.ui.button.js"></script>
+    <script src="js/ui/jquery.ui.tabs.js"></script>
+    <script src="js/ui/jquery.ui.core.js"></script>
+	<script src="js/ui/jquery.ui.widget.js"></script>
+	<script src="js/ui/jquery.ui.mouse.js"></script>
+	<script src="js/ui/jquery.ui.button.js"></script>
+	<script src="js/ui/jquery.ui.draggable.js"></script>
+	<script src="js/ui/jquery.ui.position.js"></script>
+	<script src="js/ui/jquery.ui.resizable.js"></script>
+	<script src="js/ui/jquery.ui.dialog.js"></script>
+	<script src="js/ui/jquery.ui.effect.js"></script>
+	<link rel="stylesheet" href="css/demos.css">	
+    <style type="text/css">
+        	/* Fix per a menús horitzontals. */
+		.ui-menu:after {
+		    content: ".";
+		    display: block;
+		    clear: both;
+		    visibility: hidden;
+		    line-height: 0;
+		    height: 0;
+		}
+		
+		.ui-menu .ui-menu-item {
+		    display: inline-block;
+		    float: left;
+		    margin: 0;
+		    padding: 0;
+		    width: auto;
+		}
+		
+		div #filtroBusqueda {text-align: right;}
+        body { font-size: 62.5%; }
+    	
+		
+        fieldset { padding:0; border:0; margin-top:25px; }
+        div#authentication { width: 350px; margin: 20px 0; }
+    	div#authentication table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+		div#authentication table td, div#authentication table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+        div#porticbar table { margin: 1em 0; border-collapse:collapse;border-spacing: 0px;}
+		div#porticbar tr, div#porticbar td{ padding:0px;font-size: 1.2em;font-weight: bold;background-color:#2E6E9E;color:white;text-align:left;}
+        .submit { margin-left: 12em; }
+        em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+    	div #authentication {width: 30%; margin-left: auto; margin-right: auto;}
+	</style>
+</head>
+<body>
+    <script type="text/x-handlebars" data-template-name="application">    
+        {{#view App.ApplicationView}} 
+        <div id="porticbar">
+            <table width="100%">
+                <tr>
+                    <td width="12%"><img src="images/portic.png"></td>
+                    <td width="22%"><p>PORTIC Forwarding v1.58</p></td>
+                    <td width="22%"><p>Usuario:{{App.User.user}}</p></td>
+                    <td width="22%"><p>Empresa:</p></td>
+                    <td width="22%"><p>Inicio Sesión:</p></td>
+                </tr>            
+            </table>
+        </div>        
+        {{/view}}
+        <div class="container">
+            {{outlet }}
+        </div>
+    </script>    
+    
+    <script type="text/x-handlebars" data-template-name="home-view"> 
+        {{outlet navigation}}
+        {{outlet }}
+    </script>
+                    
+    <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+    <script>window.jQuery || document.write('<script src="http://code.jquery.com/jquery-latest.js"><\/script>')</script>
+    <script src="js/libs/handlebars-1.0.0.beta.6.js"></script>
+    <script src="js/libs/ember-1.0.0-pre.2.min.js"></script>     
+    <script src="js/i18n/grid.locale-cat.js"></script>
+    <script src="js/libs/jquery.jqGrid.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/views/grid.js"></script>
+    <script src="js/libs/porticJS-0.1.js"></script>
+    <script src="js/libs/i18n.js"></script>      
+</body>
+</html>
