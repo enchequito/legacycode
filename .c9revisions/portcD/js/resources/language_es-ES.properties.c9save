@@ -1,0 +1,2 @@
+{"ts":1356020349491,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"{\n\"logIn.title\" : \"Identificaci\\u00F3n de usuario\",\n\"logIn.uid\" : \"Usuario\",\n\"logIn.pwd\" : \"Contrase�a\",\n\"logIn.accept\" : \"Aceptar\",\n\"logIn.clean\" : \"Limpiar\"\n}"]],"start1":0,"start2":0,"length1":0,"length2":160}]],"length":160}
+{"contributors":[],"silentsave":false,"ts":1356020560255,"patch":[[{"diffs":[[0,"rase"],[-1,"�"],[1,"ñ"],[0,"a\",\n"]],"start1":96,"start2":96,"length1":9,"length2":9}]],"length":160,"saved":false}

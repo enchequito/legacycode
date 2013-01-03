@@ -1,0 +1,74 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]--> <!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]--> <!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]--> <!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+    <head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+        <style type="text/css">
+			* { font-family: Verdana; font-size: 100%; }
+			label { width: 10em; float: left; }
+			label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
+			p { clear: both; }
+			.submit { margin-left: 12em; }
+			em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+			div #authentication {width: 30%; margin-left: auto; margin-right: auto;}
+			div #errorDialog {width="0%"; height="0%"; background-color: #FAF7A2; vertical-align: bottom;}
+			div #errorDgTitle {color:#084B8A;}
+			div #errorDgTitle.a {text-decoration:none;}
+		</style>
+	</head>
+	<body>
+		<script type="text/x-handlebars">
+			{{#view LogInApp.authView}}
+			<div id="authentication">
+				<h1>{{t logIn.title}}</h1>
+				<br>
+				<form id="frmAuth" method="get" {{action "doAuthenticate" target="LogInApp.authController" on="submit"}}>
+					<fieldset>
+						<p>
+							<label for="txtUID">{{t logIn.uid}}:</label>
+							<input type="text" id="txtUID" name="usuari"/>
+						</p>
+						<p>
+							<label for="txtPWD">{{t logIn.pwd}}:</label>
+							<input type="password" id="txtPWD" name="claupub"/>
+						</p>
+						<p>
+				    		<button>{{t logIn.accept}}</button>
+							<button {{action "doClean" target="LogInApp.authController"}}>{{t logIn.clean}}</button>
+						</p>
+					</fieldset>
+				</form>
+			</div>
+			<div id="errorDialog">
+				<div id="errorDgTitle">
+					<p>{{t error.title}}<a href="#" {{action "close" target="LogInApp.errorController"}}>{{t error.close}}</a></p>
+				</div>
+				<p>	
+				<label class="error">{{t error.code}}:</label>
+				<label id="errorCode"/>
+				</p>
+				<p>
+				<label class="error">{{t error.desc}}:</label>
+				<label id="errorDesc"/>
+				</p>
+			</div>
+			{{/view}}
+		</script>
+		
+
+		<!-- The missing protocol means that it will match the current protocol, either http or https. If running locally, we use the local jQuery. -->
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+        <!-- script src="http://code.jquery.com/jquery-1.8.3.js"></script -->
+        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+        <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+        <script>window.jQuery || document.write('<script src="http://code.jquery.com/jquery-latest.js"><\/script>')</script>
+        <script src="js/libs/handlebars-1.0.0.beta.6.js"></script>
+        <script src="js/libs/ember-1.0.0-pre.2.min.js"></script>
+        <script src="js/libs/i18n.js"></script>
+        <script src="js/libs/porticJS-0.1.js"></script>
+        <script src="js/porticMockup.js"></script>
+	</body>
+</html>

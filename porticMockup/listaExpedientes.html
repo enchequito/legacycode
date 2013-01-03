@@ -1,0 +1,154 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]--> <!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]--> <!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]--> <!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+    <head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+        <link rel="stylesheet" href="css/ui.jqgrid.css" />
+        <!-- 
+        <link rel="stylesheet" href="css/flexigrid.css" />
+        <link rel="stylesheet" href="css/flexigrid.pack.css" />
+        -->
+        <style type="text/css">
+       	 	/* Fix per a menús horitzontals. */
+			.ui-menu:after {
+			    content: ".";
+			    display: block;
+			    clear: both;
+			    visibility: hidden;
+			    line-height: 0;
+			    height: 0;
+			}
+			
+			.ui-menu .ui-menu-item {
+			    display: inline-block;
+			    float: left;
+			    margin: 0;
+			    padding: 0;
+			    width: auto;
+			}
+			
+			div #filtroBusqueda {text-align: right;}
+
+			/*
+			 * { font-family: Verdana; font-size: 100%; }
+			label { width: 10em; float: left; }
+			label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
+			p { clear: both; }
+			.submit { margin-left: 12em; }
+			em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+			div #authentication {width: 30%; margin-left: auto; margin-right: auto;}
+			div #errorDialog {width="0%"; height="0%"; background-color: #FAF7A2; vertical-align: bottom;}
+			div #errorDgTitle {color:#084B8A;}
+			div #errorDgTitle.a {text-decoration:none;} -->
+			*/
+		</style>
+	</head>
+	<body>
+		<script type="text/x-handlebars">
+			{{#view ListaExpApp.menuView}}
+				<div id="menuCont">
+					<ul id="menuForwarding">
+						<li><a href="#">{{t forwarding.menu.listaExp}}</a></li>
+	    				<li><a href="#">{{t forwarding.menu.nouExpImp}}</a></li>
+    					<li><a href="#">{{t forwarding.menu.nouExpExp}}</a></li>
+    					<li><a href="#">{{t forwarding.menu.gestCargExp}}</a></li>
+						<li><a href="#">{{t forwarding.menu.preferencies}}</a></li>
+					</ul>
+				</div>
+			{{/view}}
+
+			{{#view ListaExpApp.filtrosBusquedaView}}
+				<div id="filtroBusqueda">
+					<p>
+					<select id="selFiltro1">
+						<option value="--" length="12">----</option>
+					</select>
+					<select id="selFiltro2" length="12">
+						<option value="--">----</option>
+					</select>
+					<label for="circuito">
+						{{t forwarding.filtros.circuito}}:
+						<select id="selCircuito">
+							<option value="--" length="12">{{ t forwarding.filtros.circuito.todos}}</option>
+							<option value="--" length="12">{{ t forwarding.filtros.circuito.import}}</option>
+							<option value="--" length="12">{{ t forwarding.filtros.circuito.export}}</option>
+						</select>
+
+					</label>
+					<label for="estado">
+						{{t forwarding.filtros.estado}}:
+
+						<select id="selEstado">
+							<option value="--" length="12">{{t forwarding.filtros.estado.todos}}</option>
+							<option value="--" length="12">{{t forwarding.filtros.estado.enPreparacio}}</option>
+							<option value="--" length="12">{{t forwarding.filtros.estado.enCurs}}</option>
+							<option value="--" length="12">{{t forwarding.filtros.estado.incidencies}}</option>
+							<option value="--" length="12">{{t forwarding.filtros.estado.cancelat}}</option>
+							<option value="--" length="12">{{t forwarding.filtros.estado.finalitzat}}</option>
+						</select>
+					</label>
+					<select id="selEstado">
+						<option value="--" length="12">{{t forwarding.filtros.antig.ultHora}}</option>
+						<option value="--" length="12">{{t forwarding.filtros.antig.avui}}</option>
+						<option value="--" length="12">{{t forwarding.filtros.antig.ahir}}</option>
+						<option value="--" length="12">{{t forwarding.filtros.antig.ultSetm}}</option>
+						<option value="--" length="12">{{t forwarding.filtros.antig.ult2Setm}}</option>
+						<option value="--" length="12">{{t forwarding.filtros.antig.ult3Set}}</option>
+						<option value="--" length="12">{{t forwarding.filtros.antig.ultMes}}</option>
+						<option value="--" length="12">{{t forwarding.filtros.antig.ult2Mes}}</option>
+						<option value="--" length="12">{{t forwarding.filtros.antig.ult3Mes}}</option>
+					</select>
+					<img src="goma de borrar"/>
+					<button>{{t forwarding.filtros.buscar}}</button>
+					<img src="excel"/>
+					</p>
+				</div>
+			{{/view}}
+			{{#view ListaExpApp.gestionExpsView}}
+				<div id="gestionExps">
+					<ul id="menuGestExps">
+						<li><a href="#">{{t forwarding.gesExps.veure}}</a></li>
+	    				<li><a href="#">{{t forwarding.gesExps.imprimir}}</a></li>
+    					<li><a href="#">{{t forwarding.gesExps.modificar}}</a></li>
+    					<li><a href="#">{{t forwarding.gesExps.eliminar}}</a></li>
+						<li><a href="#">{{t forwarding.gesExps.finalitzar}}</a></li>
+    					<li><a href="#">{{t forwarding.gesExps.clonar}}</a></li>
+						<li><a href="#">{{t forwarding.gesExps.documentacio}}</a></li>
+					</ul>
+				</div>
+			{{/view}}
+			{{#view ListaExpApp.llistaExpsView}}
+				<div id="llistaExps">
+					<p>
+					<table id="gridExp"></table>
+					</p>
+				</div>
+				<div id="llistaExpButtons">
+					
+				</div>
+			{{/view}}
+			{{#view ListaExpApp.llistaTrackTrace}}
+				<div id="llistaTrackTrace">
+					<table id="gridTrackTrace"></table>
+				</div>
+			{{/view}}
+		</script>
+		
+
+		<!-- The missing protocol means that it will match the current protocol, either http or https. If running locally, we use the local jQuery. -->
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+        <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
+        <script>window.jQuery || document.write('<script src="http://code.jquery.com/jquery-latest.js"><\/script>')</script>
+        <script src="js/libs/handlebars-1.0.0.beta.6.js"></script>
+        <script src="js/i18n/grid.locale-cat.js"></script>
+        <script src="js/jquery.jqGrid.min.js"></script>
+        <script src="js/libs/ember-1.0.0-pre.2.min.js"></script>
+        <script src="js/libs/i18n.js"></script>
+        <script src="js/libs/porticJS-0.1.js"></script>
+        <script src="js/listaExpedientesMockup.js"></script>
+	</body>
+</html>

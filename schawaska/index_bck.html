@@ -1,0 +1,145 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]--> <!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]--> <!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]--> <!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css?v=2">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>    
+    <body>  
+    <script type="text/x-handlebars" data-template-name="app-view">
+        {{view App.NavigationView controllerBinding="controller.controllers.navigationController"}}
+        <header style="margin-top: 5px;" class="jumbotron subhead" id="overview">
+            <div class="container">
+                <br />&nbsp;
+            </div>
+        </header>
+        <div class="container">
+            {{outlet}}
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="top-nav-bar">   
+        <div class="navbar navbar navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="brand" href="#">Testing App</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+                {{#each item in controller}}
+                    {{#view view.NavigationItemView menuBinding="item.routeName"}}
+                    <a {{action navigateTo item}} >{{item.displayText}}</a>
+                    {{/view}}   
+                {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+        </div>
+    </script>
+    
+    <script type="text/x-handlebars" data-template-name="home-view">
+        <h1>Hello, Ember.js!</h1>
+        <p>
+            Hi! This is a sample app built with <a href="http://emberjs.com/" target="_blank">Ember.js</a> and its goal is to show how to write some of the common application features using Ember and some of its eco-system libraries, such as:
+            <ul>
+                <li><a href="http://jquery.com/" target="_blank">jQuery.js</a> (Dependency)</li>
+                <li><a href="http://handlebarsjs.com/" target="_blank">Handlebars.js</a> (Dependency, Ember default template engine)</li>
+                <li><a href="https://github.com/emberjs/data" target="_blank">Ember-Data</a> (Data Storage component)</li>
+                <li><a href="https://github.com/emberjs-addons/ember-bootstrap" target="_blank">Ember-Bootstrap</a> (UI for Ember)</li>
+            </ul>
+        </p>
+        <p>
+            <div>
+                <div class="btn" {{action navigateToResources}}>
+                    Check the Resources
+                </div> Or... watch  
+                <div class="btn" {{action watchVideo target="App.homeView"}}>
+                    Romney sings Eminem
+                </div>
+            </div>
+        </p>
+    </script>
+    
+    <script type="text/x-handlebars" data-template-name="resources-view">
+        <h1>Ember Resources</h1>
+        {{#view Bootstrap.Well}}
+            The following is a list of links to Articles, Blogs, Examples and other types of resources about Ember.js and its eco-system.
+        {{/view }}
+        
+        {{view Bootstrap.Pills contentBinding="controller.controllers.resourcesController.categories" selectionBinding="controller.controllers.resourcesController.categorySelected"}}
+        <i>{{controller.filteredCount}} Item(s) Found</i>
+        {{#if controller.hasItems}}
+        <ul>
+        {{#each resource in controller.filtered}}
+            <li>
+                <a {{bindAttr href="resource.url" 
+                              target="resource.target"
+                              title="resource.description"}}>
+                   {{resource.htmlText}}
+                </a>
+            </li>
+        {{/each}}        
+        </ul>
+        {{else}}
+            {{#view Bootstrap.AlertMessage type="warning"}}
+                Couldn't find items for {{controller.categorySelected}}
+            {{/view}}
+        {{/if}}
+    </script>
+    
+   <script type="text/x-handlebars" data-template-name="contact-view">
+        <h1>Contact</h1>        
+        <p>
+            <a href="http://twitter.com/tsantos83" target="_blank">
+                <img src="https://twitter.com/images/resources/twitter-bird-light-bgs.png" width="32" heigth="32" alt="Thiago's Twitter" title="Thiago's Twitter" />&nbsp;Twitter</a>
+        </p>
+        <p>
+            <a href="https://github.com/MilkyWayJoe" target="_blank">
+                <img src="http://www.puppetlabs.com//wp-content/uploads/2011/01/github_icon.png" width="32" heigth="32" alt="Thiago's Github" title="Thiago's Github" />&nbsp;Github</a>
+        </p>
+        <p>
+            <a href="http://stackexchange.com/users/22146" target="_blank">
+<img src="http://stackexchange.com/users/flair/22146.png" width="208" height="58" alt="profile for MilkyWayJoe on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="My profile at StackExchange">
+</a>
+        </p>
+        
+    </script>
+    <script type="text/x-handlebars" data-template-name="tutorials-view">
+         <h1>Tutorials</h1>
+        {{#view Bootstrap.AlertMessage type="warning"}}
+            <button type="button" class="close" data-dismiss="alert">
+                &times;
+            </button>
+            No tutorials found. Come back later.
+        {{/view}}
+    </script>
+   <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js" ></script>
+    <script type="text/javascript" src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1.js" ></script>
+    <script type="text/javascript" src="http://cloud.github.com/downloads/emberjs/ember.js/ember-latest.js" ></script>
+    <script type="text/javascript" src="http://cloud.github.com/downloads/emberjs/data/ember-data-latest.js" ></script>
+    <script type="text/javascript" src="http://cloud.github.com/downloads/emberjs-addons/ember-bootstrap/ember-bootstrap-0.0.1.js"></script>
+    <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+    </body>
+     <script src="js/app.js"></script>
+</body>
+</html>

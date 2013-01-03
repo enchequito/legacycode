@@ -1,4 +1,4 @@
-<div id="radio">        
+<div id="barranav">        
     <!--
     {{#each item in controller}}
         {{#view view.NavigationItemView menuBinding="item.routeName"}}
@@ -17,7 +17,7 @@
     <!--
     <button {{action navigateTo2 barcoAction}}>Create user</button>
     {{#view App.ButtonsView}}
-        <button id="create-user">Create new user</button>
-    {{/view}}
-    -->
+        <button {{action "doModal" target="App.ButtonsController"}}>Create new user</button>
+    {{/view}}    
+    -->  
 </div>   

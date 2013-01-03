@@ -1,0 +1,2 @@
+{"ts":1355416731004,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1355416940905,"patch":[[{"diffs":[[1,"App.HomeController = Ember.ArrayController.extend({\r\n    \r\n});\r\n"]],"start1":0,"start2":0,"length1":0,"length2":64}]],"length":64,"saved":false}

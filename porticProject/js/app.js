@@ -199,7 +199,7 @@ App.NavigationController = Ember.ArrayController.extend({
                 idText: 'radio5'
             })
         );
-    }        
+    }
 });
 
 App.GridController = Ember.ArrayController.extend({
@@ -304,18 +304,15 @@ App.ContentController = Ember.ArrayController.extend({
 App.BarcoView  = Ember.View.extend({
     templateName: 'barco-view',
     didInsertElement: function(){
-        $( "button" ).button();
-    }
-    /*,
-    didInsertElement: function(){
         console.log("barcoview");
+        $( "button" ).button();
         $( "#barco-form" ).dialog({
-        	autoOpen: false,
-			height: 300,
-			width: 350,
+        	autoOpen: true,
+			height: 345,
+			width: 365,
 			modal: true,
 			buttons: {
-				"Create an account": function() {
+				"Acceptar": function() {
 					
 				},
 				Cancel: function() {
@@ -327,7 +324,7 @@ App.BarcoView  = Ember.View.extend({
 			}
 		});
 
-    }*/
+    }
 });
 
 App.BarcoController = Ember.ArrayController.extend({
@@ -353,7 +350,7 @@ App.ListaBarcosView = Ember.View.extend({
 	    		colNames:['Nom','Bandera', 'OMI', 'Radio'],
 	    		colModel:[ 
 	    					{name: 'nom', index:'nom', width : 15, sortable : true, sorttype: 'text', align: 'center'},
-	    					{name: 'bandera', width : 4, sortable : true, align: 'left'},
+	    					{name: 'bandera', width : 7, sortable : true, align: 'left'},
 	    					{name: 'omi', width : 7, sortable : true, align: 'left'},
 	    					{name: 'radio', width : 8, sortable : true, align: 'left', hide: true}	           
 	    		         ], 
@@ -426,17 +423,14 @@ App.ButtonsView  = Ember.View.extend({
     templateName: 'buttons-view',
     didInsertElement: function() {
         console.log("entro en buttons view");
-        $( "#create-user" )
-        	.button()
-			.click(function() {
-                console.log("pulsando barco....");
-				$( "#barco-form" ).dialog( "open" );
-			});
-    },
+    }
 });
 
-App.ButtonsController = Ember.ArrayController.extend({
-   
+App.ButtonsController = Ember.Object.create({
+    doModal: function(event){
+    	console.log("en buttonscontroller....");
+        $("#barco-form").dialog( "open" );
+	}
 });
 
 

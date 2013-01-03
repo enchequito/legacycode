@@ -1,0 +1,3 @@
+{"ts":1355993167888,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1355993376295,"patch":[[{"diffs":[[1,"    <script type=\"text/x-handlebars\" data-template-name=\"rescont3-view\">\r\n        <h3>Opcion2-El usuario es:{{App.User.user}}</h3>\r\n        <h3>y su password:{{App.User.pass}}</h3>\r\n    </script>"]],"start1":0,"start2":0,"length1":0,"length2":195}]],"length":195,"saved":false}
+{"ts":1355993498904,"patch":[[{"diffs":[[-1,"    <script type=\"text/x-handlebars\" data-template-name=\"rescont3-view\">\r\n"],[0,"    "]],"start1":0,"start2":0,"length1":78,"length2":4},{"diffs":[[0,"    "],[-1,"</script>"]],"start1":108,"start2":108,"length1":13,"length2":4}]],"length":112,"saved":false}
